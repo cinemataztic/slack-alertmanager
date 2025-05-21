@@ -9,15 +9,11 @@ class SlackAlertManager {
 
   #alertCooldown;
 
-  constructor(
-    slackWebhookUrl,
-    slackUsername = 'default',
-    alertCooldown = 60000,
-  ) {
-    this.#slackWebHook = new IncomingWebhook(slackWebhookUrl, {
-      username: slackUsername,
+  constructor(config = {}) {
+    this.#slackWebHook = new IncomingWebhook(config.slackWebhookUrl, {
+      username: config.slackUsername || 'default',
     });
-    this.#alertCooldown = alertCooldown;
+    this.#alertCooldown = config.alertCooldown || 60000;
   }
 
   async #notify({ entity, state, subject, textBody = '' }) {
