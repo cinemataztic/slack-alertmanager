@@ -1,8 +1,6 @@
 const { IncomingWebhook } = require('@slack/webhook');
 
 class SlackAlertManager {
-  #entity = null;
-
   #slackWebHook = null;
 
   #lastStateMap = new Map();
@@ -12,20 +10,18 @@ class SlackAlertManager {
   #alertCooldown;
 
   constructor(
-    entity,
     slackWebhookUrl,
     slackUsername = 'default',
     alertCooldown = 60000,
   ) {
-    this.#entity = entity;
     this.#slackWebHook = new IncomingWebhook(slackWebhookUrl, {
       username: slackUsername,
     });
     this.#alertCooldown = alertCooldown;
   }
 
-  async #notify({ state, subject, textBody = '' }) {
-    const key = { entity: this.#entity, subject };
+  async #notify({ entity, state, subject, textBody = '' }) {
+    const key = { entity, subject };
     const prevState = this.#lastStateMap.get(key);
     if (prevState === state) {
       return;
@@ -55,12 +51,12 @@ class SlackAlertManager {
     }
   }
 
-  async up(subject) {
-    await this.#notify({ state: 1, subject });
+  async up(entity, subject) {
+    await this.#notify({ entity, state: 1, subject });
   }
 
-  async down(subject, textBody) {
-    await this.#notify({ state: 0, subject, textBody });
+  async down(entity, subject, textBody) {
+    await this.#notify({ entity, state: 0, subject, textBody });
   }
 
   sendAlert(textBody) {
