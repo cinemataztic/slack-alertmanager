@@ -1,5 +1,5 @@
 {
-  "name": "@cinemataztic/cine-slack-alertmanager",
+  "name": "@cinemataztic/slack-alertmanager",
   "version": "0.1.0",
   "description": "Slack alert manager ",
   "main": "src/index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cinemataztic/cine-slack-alertmanager.git"
+    "url": "git+https://github.com/cinemataztic/slack-alertmanager.git"
   },
   "keywords": [
     "slack",
@@ -17,9 +17,9 @@
   "author": "Cinemataztic",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cinemataztic/cine-slack-alertmanager/issues"
+    "url": "https://github.com/cinemataztic/slack-alertmanager/issues"
   },
-  "homepage": "https://github.com/cinemataztic/cine-slack-alertmanager#readme",
+  "homepage": "https://github.com/cinemataztic/slack-alertmanager",
   "dependencies": {
     "@slack/webhook": "^7.0.5"
   },
