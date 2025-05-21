@@ -16,19 +16,22 @@ class SlackAlertManager {
     this.#alertCooldown = config.alertCooldown || 60000;
   }
 
+  #generateKey(entity, subject) {
+    return `${entity}:${subject}`;
+  }
+
   async #notify({ entity, state, subject, textBody = '' }) {
-    const key = { entity, subject };
+    const key = this.#generateKey(entity, subject);
     const prevState = this.#lastStateMap.get(key);
-    if (prevState === state) {
-      return;
-    }
 
     this.#lastStateMap.set(key, state);
 
     const now = Date.now();
-    const lastTime = this.#lastAlertTimeMap.get(key) || 0;
-    if (now - lastTime < this.#alertCooldown) {
-      return;
+    const lastTime = this.#lastAlertTimeMap.get(key);
+    if (lastTime !== undefined && now - lastTime < this.#alertCooldown) {
+      if (prevState === state) {
+        return;
+      }
     }
     this.#lastAlertTimeMap.set(key, now);
 
