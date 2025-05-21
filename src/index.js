@@ -1,7 +1,6 @@
-/* eslint-disable max-len */
-import { IncomingWebhook } from '@slack/webhook';
+const { IncomingWebhook } = require('@slack/webhook');
 
-class AlertManager {
+class SlackAlertManager {
   #entity = null;
 
   #slackWebHook = null;
@@ -84,4 +83,4 @@ class AlertManager {
   }
 }
 
-export default AlertManager;
+module.exports = { SlackAlertManager };
