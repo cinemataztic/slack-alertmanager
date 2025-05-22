@@ -2,7 +2,7 @@
 
 Slack AlertManager is built on [@slack-webhook](https://www.npmjs.com/package/@slack/webhook) that allows clients to send alerts to a dedicated slack channel. The Slack AlertManager has a configurable throttling feature that ensures no error messages are spammed.
 
-The purpose of this package is to provide an application level Slack alertmanager which would help in raising alerts to i.e QA or engineering team in case something went wrong during an application's lifecycle. The package requires minimum setup and only requires the slack webhook URL to get started with this package.
+The purpose of this package is to provide an application level Slack alertmanager which would help in raising alerts to i.e QA or engineering team in case something went wrong during an application's lifecycle. The package requires minimal setup and only requires the slack webhook URL to get started with this package.
 
 ## Getting started
 
