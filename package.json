@@ -1,6 +1,6 @@
 {
   "name": "@cinemataztic/slack-alertmanager",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Slack alert manager ",
   "main": "src/index.js",
   "scripts": {
