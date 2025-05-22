@@ -20,7 +20,7 @@ class SlackAlertManager {
     return `${entity}:${subject}`;
   }
 
-  async #notify({ entity, state, subject, textBody = '' }) {
+  async #notify({ entity, state, subject, textBody }) {
     const key = this.#generateKey(entity, subject);
     const prevState = this.#lastStateMap.get(key);
 
@@ -50,8 +50,8 @@ class SlackAlertManager {
     }
   }
 
-  async up(entity, subject) {
-    await this.#notify({ entity, state: 1, subject });
+  async up(entity, subject, textBody = '') {
+    await this.#notify({ entity, state: 1, subject, textBody });
   }
 
   async down(entity, subject, textBody) {
